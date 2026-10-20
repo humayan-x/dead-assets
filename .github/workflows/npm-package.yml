@@ -35,7 +35,7 @@ jobs:
       - run: npm run build:native
       - run: npm test
       - run: npm run pack:local
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: native-${{ matrix.platform }}
           path: native/
@@ -58,7 +58,7 @@ jobs:
         run: node -e 'if (process.env.GITHUB_REF_NAME !== "v" + require("./package.json").version) process.exit(1)'
       - name: Pack all platforms
         run: npm pack
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: npm-package
           path: '*.tgz'
