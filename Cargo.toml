@@ -1,0 +1,26 @@
+[package]
+name = "dead-assets"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+description = "Find and clean unreferenced media assets in frontend projects"
+repository = "https://github.com/humayan-x/dead-assets"
+readme = "README.md"
+
+[dependencies]
+aho-corasick = "1.1.5"
+bpaf = { version = "0.9.28", features = ["derive"] }
+ignore = "0.4.33"
+memchr = "2.8.3"
+owo-colors = "4.4.0"
+rayon = "1.12.0"
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.154"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = true
+

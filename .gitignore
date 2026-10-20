@@ -1,0 +1,42 @@
+# Rust build output; keep Cargo.lock for this CLI application.
+target/
+
+# Generated native binaries and npm release archives.
+/native/
+dist/
+*.tgz
+
+# JavaScript dependencies and framework output, including nested examples.
+node_modules/
+.next/
+.astro/
+.vercel/
+.netlify/
+coverage/
+.nyc_output/
+
+# Local environment and credentials. Commit only sanitized example files.
+.env
+.env.*
+!.env.example
+!.env.sample
+.npmrc
+.aws/
+
+# Local agent state and editor/OS files.
+.codex/
+.agents/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Tool logs and caches.
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.cache/

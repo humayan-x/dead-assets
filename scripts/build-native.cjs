@@ -1,0 +1,18 @@
+'use strict';
+const { spawnSync } = require('node:child_process');
+const { mkdirSync, copyFileSync, chmodSync } = require('node:fs');
+const path = require('node:path');
+const root = path.resolve(__dirname, '..');
+const platforms = require('./platforms.json');
+const platform = `${process.platform}-${process.arch}`;
+if (!platforms.includes(platform)) throw new Error(`Unsupported build host: ${platform}`);
+const result = spawnSync('cargo', ['build', '--release', '--locked'], { cwd: root, stdio: 'inherit' });
+if (result.error) throw result.error;
+if (result.status !== 0) process.exit(result.status ?? 1);
+const name = process.platform === 'win32' ? 'dead-assets.exe' : 'dead-assets';
+const destination = path.join(root, 'native', platform);
+mkdirSync(destination, { recursive: true });
+const target = process.env.CARGO_TARGET_DIR ? path.resolve(root, process.env.CARGO_TARGET_DIR) : path.join(root, 'target');
+copyFileSync(path.join(target, 'release', name), path.join(destination, name));
+chmodSync(path.join(destination, name), 0o755);
+console.log(`Built native/${platform}/${name}`);

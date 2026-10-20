@@ -1,0 +1,53 @@
+{
+  "name": "dead-assets",
+  "version": "0.1.0",
+  "description": "Find and clean unreferenced media assets in Astro, Next.js and Vite projects",
+  "license": "MIT OR Apache-2.0",
+  "bin": {
+    "dead-assets": "bin/dead-assets.cjs"
+  },
+  "files": [
+    "bin/",
+    "native/",
+    "README.md",
+    "LICENSE-MIT",
+    "LICENSE-APACHE",
+    "THIRD-PARTY-LICENSES.txt",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
+    "CODE_OF_CONDUCT.md",
+    "CHANGELOG.md",
+    "docs/RELEASING.md",
+    "examples/README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "unused",
+    "assets",
+    "cleanup",
+    "astro",
+    "nextjs",
+    "vite",
+    "cli"
+  ],
+  "scripts": {
+    "build:native": "node scripts/build-native.cjs",
+    "test": "node --test tests/npm.test.cjs",
+    "prepack": "node scripts/check-package.cjs",
+    "pack:local": "node scripts/pack-local.cjs",
+    "licenses": "cargo metadata --locked --format-version 1 | node scripts/licenses.cjs"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/humayan-x/dead-assets.git"
+  },
+  "homepage": "https://github.com/humayan-x/dead-assets#readme",
+  "bugs": {
+    "url": "https://github.com/humayan-x/dead-assets/issues"
+  }
+}
